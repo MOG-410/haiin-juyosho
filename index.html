@@ -33,13 +33,12 @@ color:white;
 }
 
 
-/* 背景牢壁 */
+/* 牢壁 */
 
 .wall{
 
 position:fixed;
 inset:0;
-
 
 background:
 
@@ -61,7 +60,6 @@ transparent 75px
 }
 
 
-
 /* 爪痕 */
 
 .scratch{
@@ -76,12 +74,11 @@ height:90px;
 
 opacity:.5;
 
-
 background:
 
 repeating-linear-gradient(
 -20deg,
-transparent,
+transparent 0px,
 transparent 14px,
 rgba(255,255,255,.12) 15px,
 transparent 18px
@@ -96,7 +93,6 @@ transparent 18px
 .content{
 
 position:relative;
-
 z-index:2;
 
 width:320px;
@@ -105,11 +101,9 @@ padding:40px 30px;
 
 text-align:center;
 
-
 background:
 
 rgba(10,20,10,.92);
-
 
 border:
 
@@ -175,7 +169,6 @@ transform:translateY(-10px);
 
 
 
-/* ボタン */
 
 button{
 
@@ -200,6 +193,7 @@ transition:.3s;
 }
 
 
+
 button:hover{
 
 box-shadow:
@@ -207,245 +201,6 @@ box-shadow:
 0 0 35px #a8df70;
 
 transform:scale(1.05);
-
-}
-
-
-
-
-/* グリッチ */
-
-.glitch{
-
-animation:
-
-glitch .35s;
-
-}
-
-
-
-@keyframes glitch{
-
-
-0%{
-
-filter:none;
-
-}
-
-
-25%{
-
-filter:hue-rotate(50deg);
-
-transform:translateX(8px);
-
-}
-
-
-50%{
-
-filter:hue-rotate(-50deg);
-
-transform:translateX(-8px);
-
-}
-
-
-100%{
-
-filter:none;
-
-transform:none;
-
-}
-
-}
-
-
-
-/* 波紋 */
-
-.ripple{
-
-position:fixed;
-
-left:50%;
-top:50%;
-
-
-width:50px;
-height:50px;
-
-
-border-radius:50%;
-
-
-border:
-
-2px solid rgba(170,255,120,.7);
-
-
-opacity:0;
-
-
-transform:
-translate(-50%,-50%)
-scale(0);
-
-
-z-index:1;
-
-}
-
-
-
-.ripple.show{
-
-animation:
-
-ripple 2s;
-
-}
-
-
-
-@keyframes ripple{
-
-
-0%{
-
-opacity:1;
-
-}
-
-
-100%{
-
-opacity:0;
-
-transform:
-
-translate(-50%,-50%)
-scale(25);
-
-}
-
-}
-
-
-
-
-/* 鈴の波動 */
-
-.wave{
-
-position:fixed;
-
-left:50%;
-top:50%;
-
-
-width:40px;
-height:40px;
-
-
-border-radius:50%;
-
-
-border:
-
-2px solid rgba(220,255,160,.5);
-
-
-opacity:0;
-
-
-}
-
-
-
-.wave.show{
-
-animation:
-
-wave 1.2s;
-
-}
-
-
-@keyframes wave{
-
-
-100%{
-
-transform:
-
-translate(-50%,-50%)
-scale(15);
-
-opacity:0;
-
-}
-
-}
-
-
-
-/* 光 */
-
-.light{
-
-position:fixed;
-
-left:50%;
-top:50%;
-
-
-width:50px;
-height:50px;
-
-
-background:#caff8a;
-
-border-radius:50%;
-
-opacity:0;
-
-}
-
-
-.light.show{
-
-animation:
-
-light 1.5s;
-
-}
-
-
-
-@keyframes light{
-
-
-0%{
-
-opacity:1;
-
-}
-
-
-100%{
-
-opacity:0;
-
-transform:
-
-translate(-50%,-50%)
-scale(30);
-
-}
 
 }
 
@@ -463,7 +218,6 @@ top:0;
 height:100vh;
 
 width:50%;
-
 
 z-index:5;
 
@@ -503,50 +257,6 @@ transform 2s cubic-bezier(.7,0,.3,1);
 }
 
 
-
-/* 開門前揺れ */
-
-.shakeL{
-
-animation:
-
-shakeL .4s;
-
-}
-
-
-.shakeR{
-
-animation:
-
-shakeR .4s;
-
-}
-
-
-@keyframes shakeL{
-
-50%{
-
-transform:translateX(15px);
-
-}
-
-}
-
-
-@keyframes shakeR{
-
-50%{
-
-transform:translateX(-15px);
-
-}
-
-}
-
-
-
 #leftDoor{
 
 left:0;
@@ -559,7 +269,6 @@ left:0;
 right:0;
 
 }
-
 
 
 .openLeft{
@@ -578,6 +287,190 @@ transform:translateX(100%);
 
 
 
+/* 波紋 */
+
+.ripple{
+
+position:fixed;
+
+left:50%;
+top:50%;
+
+width:50px;
+
+height:50px;
+
+border-radius:50%;
+
+border:
+
+2px solid rgba(170,255,120,.7);
+
+opacity:0;
+
+}
+
+
+
+.ripple.show{
+
+animation:
+
+ripple 2s;
+
+}
+
+
+
+@keyframes ripple{
+
+100%{
+
+opacity:0;
+
+transform:
+
+translate(-50%,-50%)
+
+scale(25);
+
+}
+
+}
+
+
+
+
+/* 光 */
+
+.light{
+
+position:fixed;
+
+left:50%;
+top:50%;
+
+width:50px;
+
+height:50px;
+
+background:#caff8a;
+
+border-radius:50%;
+
+opacity:0;
+
+}
+
+
+
+.light.show{
+
+animation:
+
+light 1.5s;
+
+}
+
+
+
+@keyframes light{
+
+0%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:0;
+
+transform:
+
+translate(-50%,-50%)
+
+scale(30);
+
+}
+
+}
+
+
+
+
+/* タップ光 */
+
+.touchLight{
+
+position:fixed;
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+
+background:
+
+radial-gradient(
+circle,
+rgba(190,255,120,.9),
+rgba(120,255,80,.3),
+transparent 70%
+);
+
+
+pointer-events:none;
+
+
+transform:
+
+translate(-50%,-50%)
+scale(0);
+
+
+animation:
+
+touchEffect .8s;
+
+
+z-index:20;
+
+}
+
+
+
+@keyframes touchEffect{
+
+
+0%{
+
+opacity:1;
+
+transform:
+
+translate(-50%,-50%)
+scale(0);
+
+}
+
+
+100%{
+
+opacity:0;
+
+transform:
+
+translate(-50%,-50%)
+scale(5);
+
+}
+
+}
+
+
 </style>
 
 </head>
@@ -591,8 +484,6 @@ transform:translateX(100%);
 <div class="scratch"></div>
 
 <div id="ripple" class="ripple"></div>
-
-<div id="wave" class="wave"></div>
 
 <div id="light" class="light"></div>
 
@@ -638,6 +529,7 @@ transform:translateX(100%);
 
 
 
+
 <div id="leftDoor" class="door"></div>
 
 <div id="rightDoor" class="door"></div>
@@ -647,41 +539,24 @@ transform:translateX(100%);
 <script>
 
 
-setTimeout(()=>{
-
-
-document.body.classList.add("glitch");
-
-
-let l=
-document.getElementById("leftDoor");
-
-
-let r=
-document.getElementById("rightDoor");
-
-
-l.classList.add("shakeL");
-
-r.classList.add("shakeR");
-
-
+// 開門
 
 setTimeout(()=>{
 
 
-l.classList.add("openLeft");
+document
+.getElementById("leftDoor")
+.classList.add("openLeft");
 
-r.classList.add("openRight");
+
+document
+.getElementById("rightDoor")
+.classList.add("openRight");
+
 
 
 document
 .getElementById("ripple")
-.classList.add("show");
-
-
-document
-.getElementById("wave")
 .classList.add("show");
 
 
@@ -691,11 +566,42 @@ document
 
 
 
-},450);
+},1000);
 
 
+
+
+
+// タップ光
+
+document.addEventListener("pointerdown",function(e){
+
+
+let light=document.createElement("div");
+
+
+light.className="touchLight";
+
+
+light.style.left=e.clientX+"px";
+
+light.style.top=e.clientY+"px";
+
+
+document.body.appendChild(light);
+
+
+
+setTimeout(()=>{
+
+light.remove();
 
 },800);
+
+
+
+});
+
 
 
 
@@ -709,6 +615,7 @@ navigator.clipboard.writeText("𐔌ŧ‹”𐦯");
 document.getElementById("message").innerHTML=
 
 "𐔌ŧ‹”𐦯 を授かりました";
+
 
 }
 
